@@ -1,19 +1,23 @@
-# simple-backup-script
+# simple-retry commands-script
 
-A simple backup script to backup a directory to a compressed archive file.
+A simple retry commands script to run any command for any time and at the end return executed command status.
 
 ## How to use:
 
 ```bash
-Usage: backup [OPTIONS] <source_dir> <backup_name>
+Usage: retry [OPTIONS] COMMAND
 Options:
-    -v              : Verbose mode.
-    --date <format> : Add date to the backup filename.
-                      Supported formats: time, date, datetime, timestamp
+    -h: Show this help output
+    -v: Verbose mode 
+    -n: Number of tries (Default: 5)
+    -i: Interval seconds (Default: 10)
 ```
 
 ### Example:
 
 ```bash
-backup --date datetime /opt mybackup.tar.gz
+retry -v COMMAND
+retry -v -n 3 -i 2 COMMAND
+retry -v -i 5 COMMAND
+retry -i 5 -n 2 COMMAND
 ```
