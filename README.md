@@ -8,10 +8,9 @@
 
 Stargaze ![GitHub Repo stars](https://img.shields.io/github/stars/mohsenAmani/bash-scripts?style=social) if you find it useful. STAR STAR STAR.
 
-## Copyright 2023
-
+## Useful Bash Scripts for everyone.
 Please test my scripts and format them with `shfmt` before committing and making a pull request.
 
 If you find any **bugs** in the scripts, please file an issue.
-
+## Copyright 2023
 <a><img src="https://contrib.rocks/image?repo=mohsenAmani/bash-scripts"></a>
