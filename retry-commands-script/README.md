@@ -16,8 +16,8 @@ Options:
 ### Example:
 
 ```bash
-retry -v COMMAND
-retry -v -n 3 -i 2 COMMAND
-retry -v -i 5 COMMAND
-retry -i 5 -n 2 COMMAND
+retry -v true
+retry -v -n 3 -i 2 true
+retry -v -i 5 true
+retry -i 5 -n 2 [ -f ./test ]
 ```
