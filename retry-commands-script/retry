@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+
+# Modified for run any command for any time and at the end return executed command status. <mohsen.amani5@gmail.com>
+
 VERBOSE=0
 NUM=5
 INTERVAL=10
