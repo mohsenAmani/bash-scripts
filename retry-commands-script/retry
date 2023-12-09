@@ -7,6 +7,10 @@ NUM=5
 INTERVAL=10
 SUCCESS=1
 
+# clear the screen
+clear
+
+
 function help {
 	cat <<EOT
 Usage: $0 [OPTIONS] COMMAND
