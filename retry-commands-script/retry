@@ -7,11 +7,10 @@ NUM=5
 INTERVAL=10
 SUCCESS=1
 
-# clear the screen
-clear
-
 
 function help {
+# clear the screen
+clear
 	cat <<EOT
 Usage: $0 [OPTIONS] COMMAND
 Available options:
@@ -82,6 +81,8 @@ if [[ -z $COMMAND ]]; then
 fi
 
 if [[ $VERBOSE -eq 1 ]]; then
+# clear the screen
+clear
 	cat <<EOL
 VERBOSE=$VERBOSE
 NUM=$NUM
