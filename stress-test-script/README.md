@@ -60,5 +60,3 @@ Ensure the following tools are installed on your system:
 - Ensure this is not run in a production environment to prevent system unresponsiveness.
 - Use responsibly and monitor system behavior during stress testing.
 
-
-```
