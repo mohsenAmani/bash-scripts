@@ -1,0 +1,120 @@
+#!/bin/bash
+
+# Default timeout: if not provided, run indefinitely
+DEFAULT_TIMEOUT="infinity"
+TIMEOUT="$DEFAULT_TIMEOUT"
+
+# Parse command-line arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --timeout|-t) TIMEOUT="$2"; shift ;; # Set timeout from --timeout or -t
+        --help|-h) show_help ;;
+        *) 
+            echo "Unknown parameter passed: $1"
+            echo "Use --help or -h to see usage information."
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+# Help message
+show_help() {
+    cat << EOF
+Usage: $0 [--timeout <duration> | -t <duration>] [--help | -h]
+
+Options:
+  --timeout <duration>, -t <duration>  Specify the duration for the stress test (e.g., 60s, 5m).
+                                       If not provided, the test will run indefinitely.
+  --help, -h                           Show this help message and exit.
+
+Stress Tests:
+  1. Memory Stress Test
+  2. CPU Stress Test
+  3. Storage Stress Test
+
+Examples:
+  Run memory stress test for 5 minutes:
+    $0 --timeout 5m
+    $0 -t 5m
+
+  Run CPU stress test indefinitely:
+    $0
+EOF
+    exit 0
+}
+
+# Display options to the user
+cat << EOF
+Select a stress test to run:
+1. Memory Stress Test
+2. CPU Stress Test
+3. Storage Stress Test
+EOF
+read -p "Enter your choice (1/2/3): " choice
+
+# Confirmation function
+confirm_test() {
+    echo "WARNING: This test can put heavy load on your system."
+    read -p "Do you want to proceed? [Y/n]: " confirm
+    confirm=${confirm:-Y} # Default to 'Y' if no input
+    if [[ "$confirm" != "Y" && "$confirm" != "y" ]]; then
+        echo "Test aborted."
+        exit 0
+    fi
+}
+
+# Function for Memory Stress Test
+memory_stress_test() {
+    confirm_test
+    if [[ $TIMEOUT == "infinity" ]]; then
+        echo "Running Memory Stress Test indefinitely..."
+        stress-ng --vm-bytes $(awk '/MemFree/{printf "%d\n", $2 * 1;}' < /proc/meminfo)k --vm-keep -m 10
+    else
+        echo "Running Memory Stress Test for $TIMEOUT..."
+        stress-ng --vm-bytes $(awk '/MemFree/{printf "%d\n", $2 * 1;}' < /proc/meminfo)k --vm-keep -m 10 --timeout $TIMEOUT
+    fi
+}
+
+# Function for CPU Stress Test
+cpu_stress_test() {
+    confirm_test
+    if [[ $TIMEOUT == "infinity" ]]; then
+        echo "Running CPU Stress Test indefinitely..."
+        stress-ng --matrix 0
+    else
+        echo "Running CPU Stress Test for $TIMEOUT..."
+        stress-ng --matrix 0 --timeout $TIMEOUT
+    fi
+}
+
+# Function for Storage Stress Test
+storage_stress_test() {
+    confirm_test
+    if [[ $TIMEOUT == "infinity" ]]; then
+        echo "Running Storage Stress Test indefinitely..."
+        fio --name=test --rw=write --bs=1M --iodepth=32 --filename=/tmp/test --size=20G
+    else
+        echo "Running Storage Stress Test for $TIMEOUT..."
+        fio --name=test --rw=write --bs=1M --iodepth=32 --filename=/tmp/test --size=20G --runtime=$(echo $TIMEOUT | sed 's/s//') --time_based
+    fi
+}
+
+# Execute the selected test
+case $choice in
+    1)
+        memory_stress_test
+        ;;
+    2)
+        cpu_stress_test
+        ;;
+    3)
+        storage_stress_test
+        ;;
+    *)
+        echo "Invalid choice: $choice"
+        echo "Please select 1, 2, or 3. Use --help or -h for more information."
+        exit 1
+        ;;
+esac
+
