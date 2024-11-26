@@ -40,17 +40,17 @@ For more information, see the [Official Documentation](https://fio.readthedocs.i
 
 Run a memory stress test for 5 minutes:
 ```bash
-./stress-test.sh -t 5m
+./stress -t 5m
 ```
 
 Run a CPU stress test indefinitely:
 ```bash
-./stress-test.sh
+./stress
 ```
 
 Show help output:
 ```bash
-./stress-test.sh -h
+./stress -h
 ```
 
 ## Important Notes
