@@ -3,8 +3,7 @@
 ```markdown
 # Stress Test Script
 
-A simple script to perform stress tests on system resources like CPU, memory, and storage.
-It allows you to evaluate the performance and stability of your system under heavy load conditions.
+A simple script to perform stress tests on system resources like CPU, memory, and storage. It allows you to evaluate the performance and stability of your system under heavy load conditions.
 
 ---
 
@@ -15,7 +14,7 @@ Usage: stress-test.sh [OPTIONS]
 Options:
     -h, --help      Show this help output
     -t, --timeout   Duration for the test (e.g., 60s, 5m, 1h). Default: Runs indefinitely.
-
+```
 
 ---
 
