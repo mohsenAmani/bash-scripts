@@ -60,11 +60,5 @@ Ensure the following tools are installed on your system:
 - Ensure this is not run in a production environment to prevent system unresponsiveness.
 - Use responsibly and monitor system behavior during stress testing.
 
----
 
-## License
-
-This script is open-source and distributed under the MIT License. See the `LICENSE` file for more details.
 ```
-
----
