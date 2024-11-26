@@ -68,4 +68,3 @@ This script is open-source and distributed under the MIT License. See the `LICEN
 ```
 
 ---
-```
