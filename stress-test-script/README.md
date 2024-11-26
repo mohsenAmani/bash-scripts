@@ -5,7 +5,7 @@ A simple script to perform stress tests on system resources like CPU, memory, an
 ## Usage
 
 ```bash
-stress-test.sh [OPTIONS]
+stress [OPTIONS]
 
 Options:
   -h, --help      Show this help output
