@@ -15,7 +15,7 @@ Usage: stress-test.sh [OPTIONS]
 Options:
     -h, --help      Show this help output
     -t, --timeout   Duration for the test (e.g., 60s, 5m, 1h). Default: Runs indefinitely.
-```
+
 
 ---
 
@@ -68,4 +68,4 @@ This script is open-source and distributed under the MIT License. See the `LICEN
 ```
 
 ---
-
+```
