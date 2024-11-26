@@ -3,7 +3,8 @@
 ```markdown
 # Stress Test Script
 
-A simple script to perform stress tests on system resources like CPU, memory, and storage. It allows you to evaluate the performance and stability of your system under heavy load conditions.
+A simple script to perform stress tests on system resources like CPU, memory, and storage.
+It allows you to evaluate the performance and stability of your system under heavy load conditions.
 
 ---
 
