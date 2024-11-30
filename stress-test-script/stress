@@ -4,20 +4,6 @@
 DEFAULT_TIMEOUT="infinity"
 TIMEOUT="$DEFAULT_TIMEOUT"
 
-# Parse command-line arguments
-while [[ "$#" -gt 0 ]]; do
-    case $1 in
-        --timeout|-t) TIMEOUT="$2"; shift ;; # Set timeout from --timeout or -t
-        --help|-h) show_help ;;
-        *) 
-            echo "Unknown parameter passed: $1"
-            echo "Use --help or -h to see usage information."
-            exit 1
-            ;;
-    esac
-    shift
-done
-
 # Help message
 show_help() {
     cat << EOF
@@ -43,6 +29,20 @@ Examples:
 EOF
     exit 0
 }
+
+# Parse command-line arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --timeout|-t) TIMEOUT="$2"; shift ;; # Set timeout from --timeout or -t
+        --help|-h) show_help ;;
+        *) 
+            echo "Unknown parameter passed: $1"
+            echo "Use --help or -h to see usage information."
+            exit 1
+            ;;
+    esac
+    shift
+done
 
 # Display options to the user
 cat << EOF
